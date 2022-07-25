@@ -1,0 +1,65 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no" ?>
+<Pipeline>
+
+  <Entry DisplayName="Filter Trajectories - Butterworth" Enabled="0" OperationId="48" OperationName="FilterTrajectoriesButterworth">
+    <ParamList name="">
+      <Param macro="SELECTED_START_FRAME" name="FirstFrame"/>
+      <Param macro="SELECTED_END_FRAME" name="LastFrame"/>
+      <Param name="CutoffFrequency" value="10"/>
+      <Param name="FilterOrder" value="1"/>
+      <Param name="FilterType" value="0"/>
+      <Param macro="ALL_TRAJECTORIES" name="Trajectories"/>
+    </ParamList>
+  </Entry>
+
+  <Entry DisplayName="Process Dynamic Plug-in Gait Model" Enabled="0" OperationId="17" OperationName="Dynamic GaitModel">
+    <ParamList name="" version="1">
+      <Param macro="SELECTED_START_FRAME" name="FirstFrame"/>
+      <Param macro="SELECTED_END_FRAME" name="LastFrame"/>
+      <Param macro="ACTIVE_SUBJECTS" name="SUBJECTS"/>
+      <Param name="MarkerDiameter" value="14"/>
+      <Param name="ReactionFrame" value="1"/>
+      <Param name="PelvisRadiusOfGyration" value="0.31"/>
+      <Param name="ThoraxRadiusOfGyration" value="0.31"/>
+      <Param name="PowerSetting" value="1"/>
+      <Param name="AnteriorThoraxTiltPositive" value="true"/>
+      <Param name="OutputJointCentres" value="false"/>
+      <Param name="OutputSegmentCOM" value="false"/>
+      <Param name="PlugInGaitVersion" value="3.3.0"/>
+      <Param name="MultiPlate" value="false"/>
+    </ParamList>
+  </Entry>
+
+  <Entry DisplayName="Export C3D" Enabled="1" OperationId="49" OperationName="Exportc3d">
+    <ParamList name="">
+      <Param macro="CURRENT_TRIAL" name="Filename"/>
+      <Param macro="SELECTED_START_FRAME" name="StartFrame"/>
+      <Param macro="SELECTED_END_FRAME" name="EndFrame"/>
+      <Param name="Postfix" value=""/>
+      <Param name="IntegerFormat" value="false"/>
+      <Param name="SubjectPrefix" value="1"/>
+      <Param name="XAxis" value="4"/>
+      <Param name="YAxis" value="2"/>
+      <Param name="ZAxis" value="0"/>
+      <Param name="ProcessingClip"/>
+      <Param name="CopyToClip"/>
+    </ParamList>
+  </Entry>
+
+  <Entry DisplayName="Run MatLab Operation" Enabled="1" OperationId="50" OperationName="MATLAB">
+    <ParamList name="">
+      <Param name="Script" value="Y:\ting\ting-data\neuromechanics-lab\nmvicon\DriveD\MatlabFunctions\procbatch_102016\processC3DtoMAT_newVicon10262016.m"/>
+      <Param name="ScriptArgs" value="'','',{'nocom','nostatic','noemg'}"/>
+      <Param name="addPath" value="true"/>
+      <Param name="LaunchMatlab" value="false"/>
+    </ParamList>
+  </Entry>
+
+  <Entry DisplayName="Save Trial - C3D + VSK" Enabled="1" OperationId="51" OperationName="SaveOperation">
+    <ParamList name="">
+      <Param macro="SELECTED_START_FRAME" name="StartFrame"/>
+      <Param macro="SELECTED_END_FRAME" name="EndFrame"/>
+    </ParamList>
+  </Entry>
+
+</Pipeline>
